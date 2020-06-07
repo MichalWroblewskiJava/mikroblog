@@ -1,4 +1,6 @@
 package com.example.mikroblog.mikroblog.model;
 
-public class AppPost {
+public enum PostStatus {
+    ORIGINAL,
+    EDITED
 }
