@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>User Wall</title>
+</head>
+<body>
+
+<div th:replace="login::loginpage"></div>
+
+<h1>Hello <span th:text="${userWall.userMail}"></span></h1>
+<div>
+    <h3>Nick name <span th:text="${userWall.showedUserName}"></span></h3>
+</div>
+
+<form th:action="@{/user/post(username=${userWall.userMail})}" th:method="post" th:object="${newPostForm}">
+
+    Post: <input type="text" th:field="*{postContent}" id="userPost" size="50" maxlength="160">
+    <input type="submit">
+</form>
+<div>
+    <table>
+        <tr th:each="userPost : ${postList}">
+
+            <td>
+                Nick <span th:text="${userPost.user.showedUserName}"></span>
+            </td>
+            <td>
+                Date <span th:text="${#temporals.format(userPost.postCreateDate, 'dd/MM/yyyy HH:mm:ss')}"></span>
+            </td>
+            <td>
+                Content <span th:text="${userPost.postFrom.postContent}"></span>
+            </td>
+            <td>
+                <form th:action="@{'/comment/'+${userPost.postId}}" th:method="post" th:object="${newPostForm}">
+                    Comment: <input type="text" th:field="*{postContent}" id="userComment" size="50" maxlength="160">
+                    <input type="submit">
+                </form>
+            </td>
+            <table>
+                <tr th:each="userComment : ${userPost.userCommentList}">
+                    <td th:text="${userComment.showedUserName}"></td>
+                    <td th:text="${#temporals.format(userComment.commentCreateDate, 'dd/MM/yyyy HH:mm:ss')}"></td>
+                    <td th:text="${userComment.postFrom.postContent}"></td>
+                </tr>
+            </table>
+            </br>
+        </tr>
+
+    </table>
+</div>
+
+</body>
+</html>

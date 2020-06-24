@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Index</title>
+</head>
+<body>
+<div th:replace="login::loginpage"></div>
+
+<div>
+
+<!--    <table>-->
+<!--        <tr th:each="userPost : ${postList}">-->
+<!--            <table>-->
+<!--                <tr>-->
+<!--                    <td style="width: 50px">-->
+<!--                        Nick <span th:text="${userPost.user.showedUserName}"></span>-->
+<!--                    </td>-->
+
+<!--                    <td style="width: 200px">-->
+<!--                         <span th:text="${userPost.postCreateDate}"></span>-->
+<!--                    </td>-->
+<!--                </tr>-->
+<!--                <tr>-->
+<!--                    <td style="width: 400px">-->
+<!--                        <h3><span th:text="${userPost.postFrom.postContent}"></span></h3>-->
+<!--                    </td>-->
+<!--                </tr>-->
+<!--                <tr>-->
+
+<!--                </tr>-->
+<!--                <tr>-->
+<!--                <table>-->
+<!--                    <tr th:each="userComment : ${userPost.userCommentList}">-->
+<!--                        <td th:text="${userComment.showedUserName}"></td>-->
+<!--                        <td th:text="${userComment.commentCreateDate}"></td>-->
+<!--                        <td th:text="${userComment.postFrom.postContent}"></td>-->
+<!--                    </tr>-->
+<!--                </table>-->
+<!--                </tr>-->
+<!--                </br>-->
+<!--            </table>-->
+
+<!--        </tr>-->
+<!--    </table>-->
+
+</div>
+</body>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User form</title>
+</head>
+<body>
+
+<h1>User form <span th:text="${newUser.userId}"></span></h1>
+
+<form th:action="@{/user/register}" th:method="post" th:object="${newUser}">
+    <input type="hidden" th:field="*{userId}">
+
+    User Mail: <input  type="email" th:field="*{userMail}" id="userMail">
+    </br>
+
+    User Password: <input  type="password" th:field="*{password}" id="userPassword">
+    </br>
+
+    Confirm "Password: <input  type="password" th:field="*{verifyPassword}" id="matchingPassword">
+    </br>
+
+    User Name: <input type="text" th:field="*{userHiddenName}" id="userName">
+    </br>
+
+    Showed User Name: <input  type="text" th:field="*{showedUserName}" id="showedUserName">
+    </br>
+
+
+
+    </br>
+
+    <input type="submit">
+
+</form>
+
+
+<!--<span th:text="${massage}"></span>-->
+
+
+</body>
+</html>
