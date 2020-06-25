@@ -22,6 +22,12 @@ public class PostService {
     @Autowired
     private UserRepository userRepository;
 
+    @Autowired
+    private CommentRepository commentRepository;
+
+    @Autowired
+    private CommentService commentService;
+
     public void add(PostFrom post, String username) {
         UserPost userPost = new UserPost();
         userPost.setPostFrom(post);
@@ -42,5 +48,17 @@ public class PostService {
         List<UserPost> userPostList = postRepository.getUserPostByUserId(userId);
         return userPostList;
     }
+
+    public Map<UserPost, List<UserComment>> findAllPostsAndCommentsToPost() {
+        Map<UserPost, List<UserComment>> postCommentMap = new LinkedHashMap<>();
+        List<UserPost> userPostList = sortPostByDate();
+        for (UserPost userpost : userPostList) {
+            List<UserComment> commentsToPostByPostId = commentService.findCommentsToPostByPostId(userpost.getPostId());
+            postCommentMap.put(userpost, commentsToPostByPostId);
+        }
+        return postCommentMap;
+    }
+
+
 
 }

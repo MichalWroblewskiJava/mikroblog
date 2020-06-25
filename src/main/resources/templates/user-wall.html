@@ -20,25 +20,25 @@
 </form>
 <div>
     <table>
-        <tr th:each="userPost : ${postList}">
+        <tr th:each="userPost : ${postList.entrySet()}">
 
             <td>
-                Nick <span th:text="${userPost.user.showedUserName}"></span>
+                Nick <span th:text="${userPost.getKey().user.showedUserName}"></span>
             </td>
             <td>
-                Date <span th:text="${#temporals.format(userPost.postCreateDate, 'dd/MM/yyyy HH:mm:ss')}"></span>
+                Date <span th:text="${#temporals.format(userPost.getKey().postCreateDate, 'dd/MM/yyyy HH:mm:ss')}"></span>
             </td>
             <td>
-                Content <span th:text="${userPost.postFrom.postContent}"></span>
+                Content <span th:text="${userPost.getKey().postFrom.postContent}"></span>
             </td>
             <td>
-                <form th:action="@{'/comment/'+${userPost.postId}}" th:method="post" th:object="${newPostForm}">
+                <form th:action="@{'/comment/'+${userPost.getKey().postId}}" th:method="post" th:object="${newPostForm}">
                     Comment: <input type="text" th:field="*{postContent}" id="userComment" size="50" maxlength="160">
                     <input type="submit">
                 </form>
             </td>
             <table>
-                <tr th:each="userComment : ${userPost.userCommentList}">
+                <tr th:each="userComment : ${userPost.getValue()}">
                     <td th:text="${userComment.showedUserName}"></td>
                     <td th:text="${#temporals.format(userComment.commentCreateDate, 'dd/MM/yyyy HH:mm:ss')}"></td>
                     <td th:text="${userComment.postFrom.postContent}"></td>

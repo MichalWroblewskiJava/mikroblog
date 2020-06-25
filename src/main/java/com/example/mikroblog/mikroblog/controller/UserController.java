@@ -57,7 +57,8 @@ public class UserController {
         model.addAttribute("newPostForm", new PostFrom());
         model.addAttribute("newCommentForm", new UserComment());
         //model.addAttribute("userPostList", postService.findPostOfUserByUsername(userMail));
-        model.addAttribute("postList",postService.sortPostByDate() );
+        //model.addAttribute("postList",postService.sortPostByDate() );
+        model.addAttribute("postList",postService.findAllPostsAndCommentsToPost() );
         return "user-wall";
     }
 }
