@@ -20,7 +20,8 @@ public class CommentController {
     public String addComment(PostFrom userComment, @PathVariable(name = "postId") Long postId) {
         String username = SecurityContextHolder.getContext().getAuthentication().getName();
         commentService.addComment(userComment, username, postId);
-        return "redirect:/user/wall?username=" + username; // poprawić trzeba przenoszenie do strony
+        //return "redirect:/user/wall?username=" + username; // poprawić trzeba przenoszenie do strony
+        return "redirect:/user/wall/" + username; // poprawić trzeba przenoszenie do strony
     }
     @GetMapping("/comment/{postId}")
     public Long getPostId( @PathVariable(name = "postId") Long postId) {

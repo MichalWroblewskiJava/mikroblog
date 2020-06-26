@@ -44,5 +44,10 @@ public class IndexController {
         return "login";
     }
 
+    @GetMapping("/logout")
+    public String logout() {
+        return "index";
+    }
+
 }
 

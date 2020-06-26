@@ -6,6 +6,7 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.CreationTimestamp;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.lang.NonNull;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -40,9 +41,11 @@ public class User implements UserDetails {
     private String userMail;
 
     @NonNull
+    @Value("${password}")
     @Column(table = "users", name = "password")
     private String password;
 
+    @Value("${verifyPassword}")
     @Transient // nie jest widoczny w bazie danych
     private String verifyPassword;
 

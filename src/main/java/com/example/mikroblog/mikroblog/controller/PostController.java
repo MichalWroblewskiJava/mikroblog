@@ -19,7 +19,8 @@ public class PostController {
     public String addPost(PostFrom userPost) {
         String username = SecurityContextHolder.getContext().getAuthentication().getName();
         postService.add(userPost, username);
-        return "redirect:/user/wall?username=" + username;
+        //return "redirect:/user/wall?username=" + username;
+        return "redirect:/user/wall/" + username;
     }
 
 
